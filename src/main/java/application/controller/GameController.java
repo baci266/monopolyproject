@@ -126,7 +126,7 @@ public class GameController implements Controllable{
     void buy(ActionEvent event) {
         Game game = mainController.game;
         Player activePlayer = game.getActivePlayer();
-        Square square = game.getBoard().getSquareByPosition(activePlayer.getPosition());
+        Square square = Board.getSquareByPosition(activePlayer.getPosition());
         activePlayer.buyProperty(square);
         disableButtons(buyButton);
     }
@@ -162,7 +162,7 @@ public class GameController implements Controllable{
         activePlayer.makeMove(distance);
         movePlayer(activePlayer, distance);
         Logger.log(String.format("Player: \"%s\" move to position %d", activePlayer.getName(), activePlayer.getPosition()));
-        Square square = game.getBoard().getSquareByPosition(activePlayer.getPosition());
+        Square square = Board.getSquareByPosition(activePlayer.getPosition());
         square.processPlayer(activePlayer,this);
 
         if(activePlayer.hasProperties()){
@@ -229,8 +229,7 @@ public class GameController implements Controllable{
     }
 
     private void populateBoard(){
-        Board board = this.mainController.game.board;
-        ArrayList<Square> squares = board.getSquares();
+        ArrayList<Square> squares = Board.getSquares();
 
         for (int i = 0; i < squares.size(); i++) {
             Square square = squares.get(i);
@@ -253,7 +252,7 @@ public class GameController implements Controllable{
 
         int to = player.getPosition();
         int from = to - distance;
-        List<Square> squares = this.mainController.game.getBoard().getSquaresFromTo(from,to);
+        List<Square> squares = Board.getSquaresFromTo(from,to);
         double [] positions = new double[squares.size()*2];
         for (int i = 0; i < squares.size()*2; i += 2) {
             Square s = squares.get(i/2);
@@ -273,9 +272,8 @@ public class GameController implements Controllable{
     }
 
     public void movePlayerToJail(Player player){
-        Board board = this.mainController.game.getBoard();
-        Square jail = board.getJailSquare();
-        Square from = board.getSquareByPosition(player.getPosition());
+        Square jail = Board.getJailSquare();
+        Square from = Board.getSquareByPosition(player.getPosition());
         PathTransition pathTransition = new PathTransition(
                 Duration.seconds(2),
                 new Line(from.getCenterX(),from.getCenterY(),jail.getCenterX(),jail.getCenterY()),

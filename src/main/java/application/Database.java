@@ -66,8 +66,7 @@ public class Database {
                 while (result2.next()){
                     int property_position = result2.getInt("property_position");
                     String property_level = result2.getString("property_level");
-                    Board board = game.getBoard();
-                    OwnableSquare ownableSquare = (OwnableSquare) board.getSquareByPosition(property_position);
+                    OwnableSquare ownableSquare = (OwnableSquare) Board.getSquareByPosition(property_position);
                     ownableSquare.setLevel(property_level);
                     ownableSquare.setOwner(player);
                     properties.add(ownableSquare);
@@ -124,7 +123,7 @@ public class Database {
                     var preparedStatement = db.connection.prepareStatement(query3, Statement.RETURN_GENERATED_KEYS);
                     preparedStatement.setInt(1, game.getIdGame());
                     preparedStatement.setInt(2, player.getIdPlayer());
-                    preparedStatement.setInt(3, game.getBoard().getPositionBySquare(propertySquare));
+                    preparedStatement.setInt(3, Board.getPositionBySquare(propertySquare));
                     preparedStatement.setString(4, propertySquare.getLevel());
 
                     db.executeInsertQuery(preparedStatement);
@@ -187,7 +186,7 @@ public class Database {
                     var preparedStatement = db.connection.prepareStatement(query3, Statement.RETURN_GENERATED_KEYS);
                     preparedStatement.setInt(1, gameId);
                     preparedStatement.setInt(2, playerId);
-                    preparedStatement.setInt(3, game.getBoard().getPositionBySquare(propertySquare));
+                    preparedStatement.setInt(3, Board.getPositionBySquare(propertySquare));
                     preparedStatement.setString(4, propertySquare.getLevel());
 
                     db.executeInsertQuery(preparedStatement);

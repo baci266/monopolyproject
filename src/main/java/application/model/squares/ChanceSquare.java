@@ -13,9 +13,7 @@ public class ChanceSquare extends Square {
 
     @Override
     public void processPlayer(Player player, GameController gameController) {
-        Game game = gameController.mainController.game;
-        Board board = game.getBoard();
-        Card card = board.getChanceCard();
+        Card card = Board.getChanceCard();
         card.process(player, gameController);
     }
 }

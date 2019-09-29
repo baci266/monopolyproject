@@ -8,7 +8,6 @@ public class Game {
     private int id_game = -1;
     List<Player> players;
     public String gameName;
-    public Board board;
     Dice dice = new Dice();
 
     Player activePlayer;
@@ -17,13 +16,17 @@ public class Game {
     public Game(List<Player> players, String gameName) {
         this.players = players;
         this.gameName = gameName;
-        this.board = new Board();
+        Board.createBoardSquares();
+        Board.groupProperties();
+        Board.createCards();
     }
     public Game(int id_game, String gameName, int activePlayerId) {
         this.id_game = id_game;
         this.gameName = gameName;
         this.activePlayerId = activePlayerId;
-        this.board = new Board();
+        Board.createBoardSquares();
+        Board.groupProperties();
+        Board.createCards();
     }
 
     public int getIdGame() {
@@ -44,10 +47,6 @@ public class Game {
 
     public String getGameName() {
         return gameName;
-    }
-
-    public Board getBoard() {
-        return board;
     }
 
     public Dice getDice() {

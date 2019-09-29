@@ -32,25 +32,19 @@ public class Board {
 
     private static final int jailPosition = 10;
 
-    public Board(){
-        createBoardSquares();
-        groupProperties();
-        createCards();
-    }
-
-    public Card getChanceCard(){
+    public static Card getChanceCard(){
         Card card = chanceCards.poll();
         chanceCards.add(card);
         return card;
     }
 
-    public  Card getCommunityChestCard(){
+    public static Card getCommunityChestCard(){
         Card card = chestCards.poll();
         chestCards.add(card);
         return card;
     }
 
-    private void createCards() {
+    public static void createCards() {
         // Create community chest cards
         //Advance to "Go". (Collect $200)
         chestCards.add(new MoneyCard("Bank error in your favor. Collect $200. ",200 ));
@@ -92,7 +86,7 @@ public class Board {
 
     }
 
-    private void createBoardSquares() {
+    public static void createBoardSquares() {
 
         squares.add(new GoSquare("Go", 200));
         squares.add(new PropertySquare("Old Kent Road",
@@ -203,7 +197,7 @@ public class Board {
 
     }
 
-    private void groupProperties(){
+    public static void groupProperties(){
         brownGroup.add((PropertySquare) squares.get(1));
         brownGroup.add((PropertySquare) squares.get(3));
 
@@ -235,7 +229,7 @@ public class Board {
         blueGroup.add((PropertySquare) squares.get(39));
     }
 
-    public ArrayList<PropertySquare> getGroupByProperty(PropertySquare property) {
+    public static ArrayList<PropertySquare> getGroupByProperty(PropertySquare property) {
         if(brownGroup.contains(property)) return brownGroup;
         if(lightBlueGroup.contains(property)) return lightBlueGroup;
         if(pinkGroup.contains(property)) return pinkGroup;
@@ -247,14 +241,14 @@ public class Board {
         else return null;
     }
 
-    public Square getSquareByPosition(int position) {
+    public static Square getSquareByPosition(int position) {
         if(position >= 0 && position <= squares.size())
             return squares.get(position);
         else
             return null;
     }
 
-    public int getPositionBySquare(Square square){
+    public static int getPositionBySquare(Square square){
         for (int i = 0; i < squares.size(); i++) {
             if (squares.get(i).name.equals(square.name)){
                 return i;
@@ -267,15 +261,15 @@ public class Board {
         return jailPosition;
     }
 
-    public Square getJailSquare() {
+    public static Square getJailSquare() {
         return squares.get(getJailPosition());
     }
 
-    public ArrayList<Square> getSquares() {
+    public static ArrayList<Square> getSquares() {
         return squares;
     }
 
-    public List<Square> getSquaresFromTo(int from, int to) {
+    public static List<Square> getSquaresFromTo(int from, int to) {
 
         if (from >= 0) {
             return squares.subList(from,to+1);

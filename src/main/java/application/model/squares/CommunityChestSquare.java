@@ -13,9 +13,7 @@ public class CommunityChestSquare extends Square {
 
     @Override
     public void processPlayer(Player player, GameController gameController) {
-        Game game = gameController.mainController.game;
-        Board board = game.getBoard();
-        Card card = board.getCommunityChestCard();
+        Card card = Board.getCommunityChestCard();
         card.process(player, gameController);
     }
 }
