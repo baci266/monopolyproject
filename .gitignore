@@ -3,3 +3,5 @@
 /target/
 /monopolyproject.iml
 /.idea/
+/src/main/resources/monopoly2.mv.db
+/src/main/resources/monopoly2.trace.db
