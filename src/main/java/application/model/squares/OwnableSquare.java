@@ -2,6 +2,10 @@ package application.model.squares;
 
 import application.controller.GameController;
 import application.model.Player;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.input.MouseEvent;
 
 public abstract class OwnableSquare extends Square {
 
@@ -13,6 +17,19 @@ public abstract class OwnableSquare extends Square {
         super(name);
         this.rent = rent;
         this.price = price;
+        this.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> showPropertyInfo());
+
+    }
+
+    private void showPropertyInfo() {
+        Dialog dialog = new Dialog<>();
+        dialog.setTitle("Property info");
+        dialog.setHeaderText("Property owner: " + getOwner().getName() + "\n" +
+                              "Property level:" + getLevel());
+
+        ButtonType buttonTypeOk = new ButtonType("Got it", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(buttonTypeOk);
+        dialog.show();
     }
 
     public int getRent() {

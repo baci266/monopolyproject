@@ -25,7 +25,7 @@ public class MainController {
         displayMenu();
     }
 
-    private void displayMenu(){
+    public void displayMenu(){
         mainStage.setTitle("Menu Monopoly");
         Scene menuScene = loadScene(View.MENU_VIEW);
         mainStage.setScene(menuScene);

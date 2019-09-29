@@ -25,7 +25,7 @@ public class EnergySquare extends OwnableSquare {
 
             int rent = 0;
             while (i > 0) {
-                javafx.scene.control.Dialog dialog = new Dialog<>();
+                Dialog dialog = new Dialog<>();
                 dialog.setTitle("Energy square");
                 dialog.setHeaderText("Roll dice "+ i + " times. Rent to pay: " + rent);
 

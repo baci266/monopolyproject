@@ -187,4 +187,8 @@ public class Player extends ImageView {
     public void setIdPlayer(int playerId) {
         this.id_player = playerId;
     }
+
+    public boolean hasSomethingToSell() {
+        return properties.size() > 0;
+    }
 }

@@ -11,9 +11,7 @@ import javafx.animation.PathTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -144,8 +142,38 @@ public class GameController implements Controllable{
     @FXML
     void endTurn(ActionEvent event) {
         Game game = mainController.game;
-        Logger.log(String.format("Player: \"%s\" ends his turn.", game.getActivePlayer().getName()));
-        processBeforeMove();
+        Player activePlayer = game.getActivePlayer();
+        if (activePlayer.isBroke()){
+            if (activePlayer.hasSomethingToSell()) {
+                mainController.showAlert("Info", "You need to sell somthing or you lose", "");
+            }
+            else {
+                Logger.log(String.format("Player: \"%s\" is out of game", activePlayer.getName()));
+                List<Player> players = game.getPlayers();
+                players.remove(activePlayer);
+                if (players.size() == 1) {
+                    endOfGame();
+                }
+                else {
+                    processBeforeMove();
+                }
+            }
+        }
+        else {
+            Logger.log(String.format("Player: \"%s\" ends his turn.", activePlayer.getName()));
+            processBeforeMove();
+        }
+    }
+
+    private void endOfGame() {
+        Dialog dialog = new Dialog<>();
+        dialog.setTitle("End of game");
+        dialog.setHeaderText("Player " + mainController.game.getPlayers().get(0).getName() + " wins the game");
+
+        ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(buttonTypeOk);
+        dialog.showAndWait();
+        mainController.displayMenu();
     }
 
     private void processMove() {
@@ -228,7 +256,7 @@ public class GameController implements Controllable{
         disableAllButtons();
     }
 
-    private void populateBoard(){
+    private void populateBoard() {
         ArrayList<Square> squares = Board.getSquares();
 
         for (int i = 0; i < squares.size(); i++) {
