@@ -148,7 +148,7 @@ public class GameController implements Controllable{
         processBeforeMove();
     }
 
-    private void processMove(){
+    private void processMove() {
         Game game = this.mainController.game;
         Player activePlayer = game.getActivePlayer();
 
@@ -170,7 +170,7 @@ public class GameController implements Controllable{
         }
     }
 
-    public void processBeforeMove(){
+    public void processBeforeMove() {
         disableAllButtons();
         mainController.game.setNextActivePlayer();
         updateActivePlayerText();

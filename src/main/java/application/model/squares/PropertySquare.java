@@ -41,10 +41,10 @@ public class PropertySquare extends OwnableSquare {
     }
     public int priceForUpdate(){
         if (state != PropertyState.FOUR_HOUSES) {
-            return price;
+            return getPrice();
         }
         else {
-            return price * 2;
+            return getPrice() * 2;
         }
 
     }

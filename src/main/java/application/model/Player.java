@@ -55,7 +55,7 @@ public class Player extends ImageView {
     private void showPlayerProperties() {
         ListView<String> propertiesList = new ListView<>();
         for (var property: properties) {
-            propertiesList.getItems().add(property.getName());
+            propertiesList.getItems().add(property.getName() + "     State: " + property.getLevel());
         }
 
         Dialog dialog = new Dialog<>();
@@ -165,7 +165,7 @@ public class Player extends ImageView {
     }
 
     public boolean canBuyItem(OwnableSquare square) {
-        return square.owner == null && square.getPrice() <= money;
+        return square.getOwner() == null && square.getPrice() <= money;
     }
 
     public boolean canUpgrade(OwnableSquare ownableSquare) {

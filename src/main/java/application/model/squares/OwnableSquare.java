@@ -5,9 +5,9 @@ import application.model.Player;
 
 public abstract class OwnableSquare extends Square {
 
-    public int rent;
-    public int price;
-    public Player owner;
+    private int rent;
+    private int price;
+    private Player owner;
 
     public OwnableSquare(String name, int rent, int price) {
         super(name);
@@ -36,6 +36,7 @@ public abstract class OwnableSquare extends Square {
     }
 
     public void setOwner(Player owner) {
+
         this.owner = owner;
     }
 

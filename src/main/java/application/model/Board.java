@@ -11,19 +11,19 @@ import java.util.Queue;
 
 public class Board {
 
-    private Queue<Card> chanceCards = new LinkedList<>();
-    private Queue<Card> chestCards = new LinkedList<>();
+    private static Queue<Card> chanceCards = new LinkedList<>();
+    private static Queue<Card> chestCards = new LinkedList<>();
 
-    private final ArrayList<Square> squares = new ArrayList<>();
+    private static final ArrayList<Square> squares = new ArrayList<>();
 
-    private final ArrayList<PropertySquare> brownGroup = new ArrayList<>();
-    private final ArrayList<PropertySquare> lightBlueGroup = new ArrayList<>();
-    private final ArrayList<PropertySquare> pinkGroup = new ArrayList<>();
-    private final ArrayList<PropertySquare> orangeGroup = new ArrayList<>();
-    private final ArrayList<PropertySquare> redGroup = new ArrayList<>();
-    private final ArrayList<PropertySquare> yellowGroup = new ArrayList<>();
-    private final ArrayList<PropertySquare> greenGroup = new ArrayList<>();
-    private final ArrayList<PropertySquare> blueGroup = new ArrayList<>();
+    private static final ArrayList<PropertySquare> brownGroup = new ArrayList<>();
+    private static final ArrayList<PropertySquare> lightBlueGroup = new ArrayList<>();
+    private static final ArrayList<PropertySquare> pinkGroup = new ArrayList<>();
+    private static final ArrayList<PropertySquare> orangeGroup = new ArrayList<>();
+    private static final ArrayList<PropertySquare> redGroup = new ArrayList<>();
+    private static final ArrayList<PropertySquare> yellowGroup = new ArrayList<>();
+    private static final ArrayList<PropertySquare> greenGroup = new ArrayList<>();
+    private static final ArrayList<PropertySquare> blueGroup = new ArrayList<>();
 
     private static final int railwayPrice = 250;
     private static final int railwayRent = 25;

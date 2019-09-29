@@ -35,7 +35,6 @@ public class MainController {
     }
 
     public void startGame(String title, List<Player> players) {
-
         game = new Game(players,title);
 
         mainStage.setTitle(title);
