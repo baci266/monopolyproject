@@ -21,7 +21,7 @@ public class Database {
         try {
             this.connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
         } catch (SQLException ex) {
-            application.Logger.log("Chyba pri nacitani databazi: " + ex.getMessage());
+            System.out.println("Chyba pri nacitani databazi: " + ex.getMessage());
         }
     }
 
@@ -55,11 +55,6 @@ public class Database {
                 int jail_time = result.getInt("jail_time");
                 String icon = result.getString("icon");
 
-                Logger.log("" + id_player);
-                Logger.log("" + player_name);
-                Logger.log("" + position);
-                Logger.log("" + money);
-
                 Player player = new Player(id_player, player_name, position, money, icon, jail_time);
 
                 var query2 = "SELECT * FROM player_property WHERE id_game = ? AND id_player = ? ";
@@ -82,7 +77,7 @@ public class Database {
             }
             game.setPlayers(players);
         } catch (SQLException e){
-            Logger.log(e.getMessage());
+            System.out.println(e.getMessage());
         }
         return game;
     }
@@ -224,7 +219,7 @@ public class Database {
             }
             db.connection.close();
         } catch (SQLException e) {
-            Logger.log(e.getMessage());
+            System.out.println(e.getMessage());
         }
         return gamesToLoad;
     }
@@ -280,13 +275,12 @@ public class Database {
      * executes query and logs error
      * @param query
      */
-    private void executeBaseQuery(String query){
+    private void executeBaseQuery(String query) {
         try {
             var statement = connection.createStatement();
             statement.execute(query);
         } catch (SQLException e) {
-            Logger.log(e.getMessage());
-        }
+            System.out.println(e.getMessage());        }
     }
 
     /**
@@ -299,7 +293,7 @@ public class Database {
             var res = statement.executeQuery(query);
             return res.getInt("id");
         } catch (SQLException e) {
-            Logger.log(e.getMessage());
+            System.out.println(e.getMessage());
             return -1;
         }
     }
@@ -319,7 +313,7 @@ public class Database {
                 return -1;
             }
         } catch (SQLException e) {
-            Logger.log("Failed to Insert query: " + ps + " with error: " +e.getMessage());
+            System.out.println("Failed to Insert query: " + ps + " with error: " +e.getMessage());
             return -1;
         }
     }
@@ -329,7 +323,7 @@ public class Database {
             var statement = connection.createStatement();
             return statement.executeQuery(query);
         } catch (SQLException e) {
-            Logger.log("Failed to Insert query: " + query + " with error: " +e.getMessage());
+            System.out.println("Failed to Insert query: " + query + " with error: " +e.getMessage());
             return null;
         }
     }

@@ -42,6 +42,7 @@ public class Player extends ImageView {
         this.money = money;
         this.icon = icon;
         this.jailTime = jailTime;
+        setImage(new Image(View.PATH_TO_IMAGES + icon + ".png"));
     }
 
     public void addProperties(List<OwnableSquare> properties){

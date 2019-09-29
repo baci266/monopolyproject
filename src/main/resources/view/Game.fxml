@@ -95,6 +95,7 @@
                   <Label contentDisplay="CENTER" layoutY="8.0" prefHeight="49.0" prefWidth="224.0" styleClass="playerInfo" text="Player on move:" AnchorPane.topAnchor="0.0" />
                   <Label fx:id="activePlayerLabel" contentDisplay="CENTER" layoutY="49.0" prefHeight="49.0" prefWidth="220.0" styleClass="playerInfo" text="Player" />
                   <Separator layoutX="12.0" layoutY="97.0" prefHeight="0.0" prefWidth="201.0" />
+                  <ListView fx:id="listView" layoutX="10.0" layoutY="115.0" prefHeight="120.0" prefWidth="200.0" />
                </children>
             </AnchorPane>
             <Button fx:id="startButton" mnemonicParsing="false" onAction="#startGameAction" prefHeight="80.0" prefWidth="269.0" styleClass="startGameButton" text="Start game">

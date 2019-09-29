@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -22,6 +23,7 @@ import javafx.util.Duration;
 
 
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameController implements Controllable{
@@ -88,6 +90,9 @@ public class GameController implements Controllable{
 
     @FXML
     private Button saveButton;
+
+    @FXML
+    private ListView<String> listView;
     //endregion
 
 
@@ -139,7 +144,7 @@ public class GameController implements Controllable{
     @FXML
     void endTurn(ActionEvent event) {
         Game game = mainController.game;
-        Logger.log(String.format("Player: \"%s\" ends hi turn.", game.getActivePlayer().getName()));
+        Logger.log(String.format("Player: \"%s\" ends his turn.", game.getActivePlayer().getName()));
         processBeforeMove();
     }
 
@@ -212,6 +217,8 @@ public class GameController implements Controllable{
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
+
+        Logger.listView = listView;
 
         populateBoard();
         isRunning = true;
@@ -287,10 +294,10 @@ public class GameController implements Controllable{
                 .stream().sorted(Comparator.comparing(Player::getMoney))
                 .collect(Collectors.toList());
         for (int i = 0; i < playerscoreBoard.size(); i++) {
-            try{
+            try {
                 Player player = sortedPlayers.get(i);
                 playerscoreBoard.get(i).setText(player.getName() + ":  " + player.getMoney());
-            }catch (IndexOutOfBoundsException e){
+            } catch (IndexOutOfBoundsException e) {
                 playerscoreBoard.get(i).setText("");
             }
         }
