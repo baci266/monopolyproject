@@ -24,6 +24,10 @@ public class Board {
     private static final ArrayList<PropertySquare> yellowGroup = new ArrayList<>();
     private static final ArrayList<PropertySquare> greenGroup = new ArrayList<>();
     private static final ArrayList<PropertySquare> blueGroup = new ArrayList<>();
+    private static final ArrayList<EnergySquare> energyGroup = new ArrayList<>();
+    private static final ArrayList<RailwaySquare> railwayGroup = new ArrayList<>();
+
+
 
     private static final int railwayPrice = 250;
     private static final int railwayRent = 25;
@@ -227,6 +231,14 @@ public class Board {
 
         blueGroup.add((PropertySquare) squares.get(37));
         blueGroup.add((PropertySquare) squares.get(39));
+
+        energyGroup.add((EnergySquare) squares.get(12));
+        energyGroup.add((EnergySquare) squares.get(28));
+
+        railwayGroup.add((RailwaySquare) squares.get(5));
+        railwayGroup.add((RailwaySquare) squares.get(15));
+        railwayGroup.add((RailwaySquare) squares.get(25));
+        railwayGroup.add((RailwaySquare) squares.get(35));
     }
 
     public static ArrayList<PropertySquare> getGroupByProperty(PropertySquare property) {

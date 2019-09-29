@@ -13,7 +13,12 @@ public class MoneyCard extends Card{
 
     @Override
     public void process(Player player, GameController gameController) {
-        player.payMoney(value);
+        if(value < 0){
+            player.payMoney(value);
+        }
+        else {
+            player.addMoney(value);
+        }
         gameController.showCardDialog(this.description);
     }
 }

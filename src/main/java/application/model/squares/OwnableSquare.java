@@ -18,7 +18,6 @@ public abstract class OwnableSquare extends Square {
         this.rent = rent;
         this.price = price;
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> showPropertyInfo());
-
     }
 
     private void showPropertyInfo() {
