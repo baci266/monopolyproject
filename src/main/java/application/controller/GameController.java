@@ -165,7 +165,6 @@ public class GameController implements Controllable{
         Square square = game.getBoard().getSquareByPosition(activePlayer.getPosition());
         square.processPlayer(activePlayer,this);
 
-        //TODO: zistit ci moze predavat uz pred hodom kocky
         if(activePlayer.hasProperties()){
             enableButtons(sellButton);
         }

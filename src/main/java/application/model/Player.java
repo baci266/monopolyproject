@@ -4,8 +4,11 @@ import application.Logger;
 import application.View;
 import application.model.squares.OwnableSquare;
 import application.model.squares.Square;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +46,22 @@ public class Player extends ImageView {
         this.icon = icon;
         this.jailTime = jailTime;
         setImage(new Image(View.PATH_TO_IMAGES + icon + ".png"));
+        this.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> showPlayerProperties());
+    }
+
+    private void showPlayerProperties() {
+        ListView<String> propertiesList = new ListView<>();
+        for (var property: properties) {
+            propertiesList.getItems().add(property.getName());
+        }
+        // Create the custom dialog.
+        Dialog dialog = new Dialog<>();
+        dialog.setTitle("Player properties");
+        dialog.setHeaderText("Player " + this.name + " properties");
+
+        dialog.getDialogPane().getChildren().add(propertiesList);
+
+        dialog.show();
     }
 
     public void addProperties(List<OwnableSquare> properties){

@@ -47,7 +47,7 @@ public class Database {
             preparedStatement = db.connection.prepareStatement(query);
             preparedStatement.setInt(1, id_game);
             result = preparedStatement.executeQuery();
-            while (result.next()){
+            while (result.next()) {
                 int id_player = result.getInt("id_player");
                 String player_name = result.getString("name");
                 int position = result.getInt("position");
@@ -181,7 +181,7 @@ public class Database {
             player.setIdPlayer(playerId);
 
             var playerPropertySquares = player.getPropertySquares();
-            for (OwnableSquare propertySquare: playerPropertySquares) {
+            for (OwnableSquare propertySquare : playerPropertySquares) {
                 String query3 = "INSERT INTO player_property (id_game, id_player, property_position, property_level) VALUES ( ? , ? , ? , ? )";
                 try {
                     var preparedStatement = db.connection.prepareStatement(query3, Statement.RETURN_GENERATED_KEYS);
@@ -191,11 +191,21 @@ public class Database {
                     preparedStatement.setString(4, propertySquare.getLevel());
 
                     db.executeInsertQuery(preparedStatement);
-
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
+        }
+
+        String gamequery = "UPDATE games SET active_player = ? WHERE id_game = ? ";
+        try {
+            var preparedStatement = db.connection.prepareStatement(gamequery);
+            preparedStatement.setInt(1, game.getActivePlayer().getIdPlayer());
+            preparedStatement.setInt(2, gameId);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
