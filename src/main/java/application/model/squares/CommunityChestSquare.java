@@ -1,7 +1,10 @@
 package application.model.squares;
 
 import application.controller.GameController;
+import application.model.Board;
+import application.model.Game;
 import application.model.Player;
+import application.model.cards.Card;
 
 public class CommunityChestSquare extends Square {
     public CommunityChestSquare(String name) {
@@ -10,7 +13,9 @@ public class CommunityChestSquare extends Square {
 
     @Override
     public void processPlayer(Player player, GameController gameController) {
-        //TODO: impelemntovat podla pravidiel zatial zaplati 100
-        player.payMoney(100);
+        Game game = gameController.mainController.game;
+        Board board = game.getBoard();
+        Card card = board.getCommunityChestCard();
+        card.process(player, gameController);
     }
 }

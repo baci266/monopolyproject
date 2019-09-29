@@ -4,11 +4,14 @@ import application.Logger;
 import application.View;
 import application.model.squares.OwnableSquare;
 import application.model.squares.Square;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,13 +57,17 @@ public class Player extends ImageView {
         for (var property: properties) {
             propertiesList.getItems().add(property.getName());
         }
-        // Create the custom dialog.
+
         Dialog dialog = new Dialog<>();
         dialog.setTitle("Player properties");
         dialog.setHeaderText("Player " + this.name + " properties");
 
-        dialog.getDialogPane().getChildren().add(propertiesList);
+        AnchorPane pane = new AnchorPane();
+        pane.getChildren().add(propertiesList);
+        dialog.getDialogPane().setContent(pane);
 
+        ButtonType buttonTypeOk = new ButtonType("Got it", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(buttonTypeOk);
         dialog.show();
     }
 

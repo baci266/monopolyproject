@@ -1,11 +1,19 @@
 package application.model;
 
+import application.model.cards.Card;
+import application.model.cards.MoneyCard;
 import application.model.squares.*;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Board {
+
+    private Queue<Card> chanceCards = new LinkedList<>();
+    private Queue<Card> chestCards = new LinkedList<>();
+
     private final ArrayList<Square> squares = new ArrayList<>();
 
     private final ArrayList<PropertySquare> brownGroup = new ArrayList<>();
@@ -27,6 +35,61 @@ public class Board {
     public Board(){
         createBoardSquares();
         groupProperties();
+        createCards();
+    }
+
+    public Card getChanceCard(){
+        Card card = chanceCards.poll();
+        chanceCards.add(card);
+        return card;
+    }
+
+    public  Card getCommunityChestCard(){
+        Card card = chestCards.poll();
+        chestCards.add(card);
+        return card;
+    }
+
+    private void createCards() {
+        // Create community chest cards
+        //Advance to "Go". (Collect $200)
+        chestCards.add(new MoneyCard("Bank error in your favor. Collect $200. ",200 ));
+        chestCards.add(new MoneyCard("Doctor's fees. Pay $50.",-50 ));
+        chestCards.add(new MoneyCard("From sale of stock you get $50.",50 ));
+        //Get Out of Jail Free.
+        //Go to Jail
+        //Grand Opera Night {Opening in previous US editions, not in the deck in UK editions}. Collect $50 from every player for opening night seats
+        chestCards.add(new MoneyCard("Holiday Fund matures. Receive $100.",100 ));
+        chestCards.add(new MoneyCard("Income tax refund. Collect $20. ",20 ));
+        //It is your birthday. Collect $10 from every player.
+        chestCards.add(new MoneyCard("Life insurance matures – Collect $100 ",100 ));
+        chestCards.add(new MoneyCard("Hospital Fees. Pay $50. ",-50 ));
+        chestCards.add(new MoneyCard("School fees. Pay $50.",-50 ));
+        chestCards.add(new MoneyCard("Receive $25 consultancy fee.",50 ));
+        //You are assessed for street repairs: Pay $40 per house and $115 per hotel you own.
+        chestCards.add(new MoneyCard("You have won second prize in a beauty contest. Collect $10.",10 ));
+        chestCards.add(new MoneyCard("You inherit $100. ",100 ));
+
+
+        //Create chance Cards
+        //Advance to "Go". (Collect $200)
+        //Advance to Illinois Ave. {Avenue}. If you pass Go, collect $200.
+        //Advance to St. Charles Place. If you pass Go, collect $200.
+        //Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total 10 times the amount thrown.
+        //Advance token to the nearest Railroad and pay owner twice the rental to which he/she {he} is otherwise entitled. If Railroad is unowned, you may buy it from the Bank.
+        chanceCards.add(new MoneyCard("Bank pays you dividend of $50.", 50));
+        //Get out of Jail Free. This card may be kept until needed, or traded/sold.
+        //Go Back 3 Spaces.
+        //Go to Jail. Go directly to Jail. Do not pass GO, do not collect $200.
+        //Make general repairs on all your property: For each house pay $25, For each hotel {pay} $100.
+
+        chanceCards.add(new MoneyCard("Pay poor tax of $15", -15));
+        //Take a trip to Reading Railroad. If you pass Go, collect $200.
+        //Take a walk on the Boardwalk. Advance token to Boardwalk.
+        //You have been elected Chairman of the Board. Pay each player $50.
+        chanceCards.add(new MoneyCard("Your building loan matures. Receive $150.", 150));
+        chanceCards.add(new MoneyCard("You have won a crossword competition. Collect $100.", 100));
+
     }
 
     private void createBoardSquares() {

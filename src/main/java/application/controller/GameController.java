@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 
 public class GameController implements Controllable{
 
-    private MainController mainController;
+    public MainController mainController;
     private boolean isRunning;
 
     //region ===========Elements===============
@@ -310,5 +310,9 @@ public class GameController implements Controllable{
                 Thread.sleep(1000);
             } catch (InterruptedException ignored) { }
         }
+    }
+
+    public void showCardDialog(String description) {
+        mainController.showAlert("Card description", description,"");
     }
 }
