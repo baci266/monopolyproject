@@ -43,8 +43,6 @@ public class MainController {
         mainStage.setScene(gameScene);
         GameController gameController = loader.getController();
         gameController.setMainController(this);
-        gameController.processBeforeMove();
-
     }
 
     public void loadGame(int game_id) {
@@ -58,7 +56,6 @@ public class MainController {
         mainStage.setScene(gameScene);
         GameController gameController = loader.getController();
         gameController.setMainController(this);
-        gameController.processBeforeMove();
     }
 
     public void exitGame(){

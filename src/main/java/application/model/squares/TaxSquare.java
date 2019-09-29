@@ -5,7 +5,7 @@ import application.model.Player;
 
 public class TaxSquare extends Square{
 
-    public int taxValue;
+    private int taxValue;
 
     public TaxSquare(String name, int taxValue) {
         super(name);
@@ -15,5 +15,6 @@ public class TaxSquare extends Square{
     @Override
     public void processPlayer(Player player, GameController gameController) {
         player.payMoney(taxValue);
+        gameController.mainController.showAlert("Tax space", "You paid " + taxValue, "");
     }
 }

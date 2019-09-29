@@ -95,7 +95,6 @@ public class GameController implements Controllable{
     private ListView<String> listView;
     //endregion
 
-
     @FXML
     void startGameAction(ActionEvent event) {
         List<Player> players = this.mainController.game.getPlayers();
@@ -103,6 +102,7 @@ public class GameController implements Controllable{
         for (Player player:players) {
             movePlayer(player, 1);
         }
+        processBeforeMove();
         //after click on start game disable startGameButton
         disableButtons(startButton);
     }
@@ -225,6 +225,7 @@ public class GameController implements Controllable{
         updater.setDaemon(true);
         createPlayerScoreBoard(mainController.game.getPlayers().size());
         updater.start();
+        disableAllButtons();
     }
 
     private void populateBoard(){

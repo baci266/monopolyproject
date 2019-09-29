@@ -18,7 +18,6 @@ public class ChanceSquare extends Square {
         Card card = board.getChanceCard();
         card.process(player, gameController);
     }
-
 }
 
 
