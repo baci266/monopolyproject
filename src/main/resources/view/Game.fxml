@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.net.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="MainPane" fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GameController">
+    <stylesheets>
+        <URL value="@GameStyles.css" />
+    </stylesheets>
+    <children>
+        <AnchorPane fx:id="boardAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="680.0" styleClass="gameBoard-pane" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <GridPane fx:id="gameBoard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="680.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                        <ColumnConstraints maxWidth="90.0" minWidth="90.0" prefWidth="90.0" />
+                        <ColumnConstraints maxWidth="55.0" minWidth="55.0" prefWidth="55.0" />
+                        <ColumnConstraints maxWidth="55.0" minWidth="55.0" prefWidth="55.0" />
+                        <ColumnConstraints maxWidth="55.0" minWidth="55.0" prefWidth="55.0" />
+                        <ColumnConstraints maxWidth="56.0" minWidth="56.0" prefWidth="56.0" />
+                        <ColumnConstraints maxWidth="55.0" minWidth="55.0" prefWidth="55.0" />
+                        <ColumnConstraints maxWidth="55.0" minWidth="55.0" prefWidth="55.0" />
+                        <ColumnConstraints maxWidth="56.0" minWidth="56.0" prefWidth="56.0" />
+                        <ColumnConstraints maxWidth="55.0" minWidth="55.0" prefWidth="55.0" />
+                        <ColumnConstraints maxWidth="55.0" minWidth="55.0" prefWidth="55.0" />
+                        <ColumnConstraints maxWidth="90.0" minWidth="90.0" prefWidth="90.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" />
+                        <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" />
+                        <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" />
+                        <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" />
+                        <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" />
+                        <RowConstraints maxHeight="56.0" minHeight="56.0" prefHeight="56.0" />
+                        <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" />
+                        <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" />
+                        <RowConstraints maxHeight="56.0" minHeight="56.0" prefHeight="56.0" />
+                        <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" />
+                        <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" />
+                    </rowConstraints>
+               <children>
+                  <ImageView fx:id="dice1" fitHeight="80.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" styleClass="dice" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../images/diceBlank.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="dice2" fitHeight="80.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" styleClass="dice" GridPane.columnIndex="3" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../images/diceBlank.png" />
+                     </image>
+                  </ImageView>
+               </children>
+                </GridPane>
+            </children>
+        </AnchorPane>
+      <HBox fx:id="actionHBox" layoutX="2.0" layoutY="680.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="680.0" styleClass="actionHbox" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="680.0">
+         <children>
+            <Button fx:id="rollDiceButton" mnemonicParsing="false" onAction="#rollDice" text="Roll Dice">
+               <HBox.margin>
+                  <Insets left="40.0" top="30.0" />
+               </HBox.margin></Button>
+            <Button fx:id="buyButton" mnemonicParsing="false" onAction="#buy" text="Buy">
+               <HBox.margin>
+                  <Insets left="40.0" top="30.0" />
+               </HBox.margin></Button>
+            <Button fx:id="sellButton" mnemonicParsing="false" onAction="#sell" text="Sell">
+               <HBox.margin>
+                  <Insets left="40.0" top="30.0" />
+               </HBox.margin></Button>
+            <Button fx:id="upgradeButton" mnemonicParsing="false" onAction="#upgrade" text="Upgrade">
+               <HBox.margin>
+                  <Insets left="40.0" top="30.0" />
+               </HBox.margin></Button>
+            <Button fx:id="endTurnButton" mnemonicParsing="false" onAction="#endTurn" text="End turn">
+               <HBox.margin>
+                  <Insets left="40.0" top="30.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <VBox fx:id="information" layoutX="680.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="220.0" styleClass="informationVBox" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="scorePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="220.0">
+               <children>
+                  <Label fx:id="scoreBoardLabel" contentDisplay="CENTER" layoutY="-10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="220.0" styleClass="scoreLabel" text="Score Board" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <VBox fx:id="scoresBox" layoutY="74.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="220.0" styleClass="scoreVBox" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="playerInfoPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="315.0" prefWidth="220.0" styleClass="playerInfo">
+               <children>
+                  <Label contentDisplay="CENTER" layoutY="8.0" prefHeight="49.0" prefWidth="224.0" styleClass="playerInfo" text="Player on move:" AnchorPane.topAnchor="0.0" />
+                  <Label fx:id="activePlayerLabel" contentDisplay="CENTER" layoutY="49.0" prefHeight="49.0" prefWidth="220.0" styleClass="playerInfo" text="Player" />
+                  <Separator layoutX="12.0" layoutY="97.0" prefHeight="0.0" prefWidth="201.0" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#startGameAction" prefHeight="80.0" prefWidth="269.0" styleClass="startGameButton" text="Start game">
+               <font>
+                  <Font name="System Italic" size="34.0" />
+               </font>
+            </Button>
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveGameAction" prefHeight="80.0" prefWidth="269.0" styleClass="startGameButton" text="Save game">
+               <font>
+                  <Font name="System Italic" size="34.0" />
+               </font>
+            </Button>
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitGame" prefHeight="80.0" prefWidth="269.0" styleClass="startGameButton" text="Exit game">
+               <font>
+                  <Font name="System Italic" size="34.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>

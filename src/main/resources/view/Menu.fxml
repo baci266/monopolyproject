@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<AnchorPane prefHeight="945.0" prefWidth="609.0" styleClass="menuPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MenuController">
+   <stylesheets>
+      <URL value="@MenuStyles.css" />
+   </stylesheets>
+   <children>
+      <ImageView fitHeight="180.0" fitWidth="608.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/monopolytransparent2.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="gameTitle" layoutX="193.0" layoutY="240.0" prefHeight="39.0" prefWidth="361.0" />
+      <Button fx:id="start" layoutX="433.0" layoutY="547.0" mnemonicParsing="false" onAction="#startGame" prefHeight="61.0" prefWidth="147.0" text="START" AnchorPane.bottomAnchor="337.0" />
+      <Button fx:id="quit" layoutX="433.0" layoutY="862.0" mnemonicParsing="false" onAction="#quitGame" prefHeight="61.0" prefWidth="147.0" text="QUIT" AnchorPane.bottomAnchor="22.0" />
+      <Label layoutX="44.0" layoutY="246.0" text="Game Name:" />
+      <Label layoutX="54.0" layoutY="333.0" text="Player 1:" />
+      <TextField fx:id="player1Name" layoutX="193.0" layoutY="327.0" />
+      <ChoiceBox fx:id="player1Icon" layoutX="445.0" layoutY="327.0" prefHeight="39.0" prefWidth="113.0" />
+      <Label layoutX="54.0" layoutY="385.0" text="Player 2:" />
+      <Label layoutX="54.0" layoutY="435.0" text="Player 3:" />
+      <Label layoutX="54.0" layoutY="491.0" text="Player 4:" />
+      <TextField fx:id="player2Name" layoutX="193.0" layoutY="379.0" />
+      <TextField fx:id="player3Name" layoutX="192.0" layoutY="429.0" />
+      <TextField fx:id="player4Name" layoutX="192.0" layoutY="485.0" />
+      <ChoiceBox fx:id="player2Icon" layoutX="445.0" layoutY="379.0" prefHeight="39.0" prefWidth="113.0" />
+      <ChoiceBox fx:id="player3Icon" layoutX="445.0" layoutY="429.0" prefHeight="39.0" prefWidth="113.0" />
+      <ChoiceBox fx:id="player4Icon" layoutX="445.0" layoutY="485.0" prefHeight="39.0" prefWidth="113.0" />
+      <Button fx:id="load" layoutX="93.0" layoutY="844.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="61.0" prefWidth="147.0" text="LOAD" />
+      <Label layoutX="65.0" layoutY="578.0" text="LoadGame:" />
+      <TableView fx:id="gamesTable" layoutX="54.0" layoutY="621.0" prefHeight="200.0" prefWidth="526.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,76 @@
+
+.gameBoard-pane {
+    -fx-background-image: url("../images/Board.png");
+}
+
+.actionHbox {
+    -fx-background-color: #ff0246;
+}
+
+.informationVBox {
+    -fx-background-color: rgba(60, 190, 255, 0.92);
+    -fx-background-fills: transparent;
+}
+
+.scoreLabel {
+    -fx-background-color: #717171;
+    -fx-alignment: center;
+}
+
+.scoreVBox {
+    -fx-background-color: #b4b4b4;
+}
+
+.playerInfo {
+    -fx-alignment: center;
+}
+
+.button.startGameButton {
+    -fx-background-color: green;
+    -fx-font-size: 25px;
+}
+
+.button {
+    -fx-background-color:
+            #090a0c,
+            linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+            linear-gradient(#20262b, #191d22),
+            radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 10 20 10 20;
+}
+
+.button Text {
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.9) , 1, 0.0 , 0 , 1 );
+}
+
+.button:disabled {
+    -fx-background-color: red;
+}
+
+.button:hover {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.square {
+    -fx-background-color: transparent;
+}
+
+.square:hover {
+    -fx-background-color: transparent;
+    -fx-border-color: #fffc2a;
+    -fx-border-style: dashed;
+    -fx-border-width: 3px;
+}
+
+.playerIcon {
+    -fx-border-color: red;
+    -fx-border-width: 3px;
+}
