@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Database {
 
-    public static final String URL = "jdbc:h2:~/OneDrive/Desktop/monopolyproject/src/main/resources/monopoly2";
+    public static final String URL = "jdbc:h2:~/monopoly2";
     public static final String USER_NAME = "sa";
     public static final String PASSWORD = "";
 
