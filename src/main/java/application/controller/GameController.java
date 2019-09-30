@@ -42,34 +42,16 @@ public class GameController implements Controllable{
     public Button sellButton;
 
     @FXML
-    private HBox actionHBox;
-
-    @FXML
     private Label activePlayerLabel;
-
-    @FXML
-    private Label scoreBoardLabel;
 
     @FXML
     private GridPane gameBoard;
 
     @FXML
-    private AnchorPane playerInfoPane;
-
-    @FXML
     public Button rollDiceButton;
 
     @FXML
-    private AnchorPane boardAnchor;
-
-    @FXML
     private VBox scoresBox;
-
-    @FXML
-    private AnchorPane scorePane;
-
-    @FXML
-    private VBox information;
 
     @FXML
     public Button endTurnButton;
@@ -82,12 +64,6 @@ public class GameController implements Controllable{
 
     @FXML
     private Button startButton;
-
-    @FXML
-    private Button exitButton;
-
-    @FXML
-    private Button saveButton;
 
     @FXML
     private ListView<String> listView;
@@ -115,6 +91,7 @@ public class GameController implements Controllable{
     void exitGame(ActionEvent event) {
         mainController.exitGame();
     }
+
     @FXML
     void rollDice(ActionEvent event) {
         processMove();
@@ -145,7 +122,7 @@ public class GameController implements Controllable{
         Player activePlayer = game.getActivePlayer();
         if (activePlayer.isBroke()){
             if (activePlayer.hasSomethingToSell()) {
-                mainController.showAlert("Info", "You need to sell somthing or you lose", "");
+                mainController.showAlert("Info", "You need to sell something or you lose", "");
             }
             else {
                 Logger.log(String.format("Player: \"%s\" is out of game", activePlayer.getName()));
@@ -193,7 +170,7 @@ public class GameController implements Controllable{
         Square square = Board.getSquareByPosition(activePlayer.getPosition());
         square.processPlayer(activePlayer,this);
 
-        if(activePlayer.hasProperties()){
+        if (activePlayer.hasProperties()) {
             enableButtons(sellButton);
         }
     }
