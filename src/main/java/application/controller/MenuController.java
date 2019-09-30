@@ -12,19 +12,19 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.*;
 
 public class MenuController  implements Initializable,Controllable {
-    //TODO: pridat select pocet hracov
-    //TODO: podla poctu hracov vytvorit policka pre hracov spravit na to novu triedu
-    //TODO: a bude spolocny list a bude sa vymazavat ak si jeden hrac vyberie
 
     private MainController mainController;
 
     private ObservableList<String> icons;
 
     private Map<TextField,ChoiceBox<String>> playerInformation;
+
+    List<String> iconsList = Arrays.asList("Boot", "Car", "Hat", "Iron");
 
     //region Elements
     @FXML
@@ -118,19 +118,14 @@ public class MenuController  implements Initializable,Controllable {
         gamesTable.getColumns().add(dateColumn);
         gamesTable.getColumns().add(playersColumn);
 
-        List<String> list = new ArrayList<>();
         playerInformation = new HashMap<>();
         playerInformation.put(player1Name,player1Icon);
         playerInformation.put(player2Name,player2Icon);
         playerInformation.put(player3Name,player3Icon);
         playerInformation.put(player4Name,player4Icon);
 
-        list.add("Boot");
-        list.add("Car");
-        list.add("Hat");
-        list.add("Iron");
 
-        icons = FXCollections.observableArrayList(list);
+        icons = FXCollections.observableArrayList(iconsList);
 
         player1Icon.setItems(icons);
         player2Icon.setItems(icons);
@@ -164,11 +159,7 @@ public class MenuController  implements Initializable,Controllable {
     }
 
     private void createGamesToLoad(){
-        List<GameToLoad> gamesToLoad = new ArrayList<>();
-
-        gamesToLoad = Database.getGamesToLoad();
+        List<GameToLoad> gamesToLoad = Database.getGamesToLoad();
         gamesTable.getItems().addAll(gamesToLoad);
-
-
     }
 }
